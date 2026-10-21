@@ -1,0 +1,219 @@
+================================================================================
+                    PROYECTO: LandiCy (Landing & Content Simplicity)
+     Arquitectura Web Ligera, Creador Modular Multisitio y Motor Headless
+================================================================================
+
+1. VISIÓN GENERAL Y PROPÓSITO
+--------------------------------------------------------------------------------
+LandiCy es un generador y gestor visual de sitios web concebido como una 
+alternativa moderna, hiperligera y segura frente a CMS monolíticos como WordPress.
+
+Sus pilares fundamentales:
+  a) Rendimiento Extremo: Páginas públicas que cargan en menos de 0.4s (Core Web 
+     Vitals en verde por defecto).
+  b) Desacoplamiento Total: La web pública no ejecuta PHP ni consulta bases de 
+     datos durante las visitas de los usuarios.
+  c) Experiencia de Edición Intuitiva: Flujo de diseño basado en bloques 
+     modulares pre-estilizados y edición in-situ tipo PowerPoint/Notion.
+  d) Gobernanza & Staging: Sistema de dos etapas (Borrador -> Revisión -> Publicación).
+  e) Soporte Multisitio (Multi-tenant): Capacidad de gestionar múltiples proyectos 
+     o crear páginas completas desde cero bajo un mismo panel.
+  f) Cero Dependencia de Terceros: 100% autónomo sobre infraestructura de hosting 
+     compartido estándar (Apache/Nginx, PHP nativo moderno, MySQL).
+
+--------------------------------------------------------------------------------
+2. ARQUITECTURA MULTISITIO Y DESACOPLAMIENTO
+--------------------------------------------------------------------------------
+LandiCy separa el entorno de administración de la capa de entrega pública:
+
+  [PANEL CENTRAL: admin.landicy.com o admin.heruxec.com]
+         │
+         ├── Selector de Proyectos: [herUX] [Comunidad B] [Landing Consultoría]
+         │
+         ├── Motor de Bloques: Ensamblado visual mediante componentes vivos
+         │
+         ├── Guardado en MySQL: Registro de versiones y borradores (staging)
+         │
+         ▼ (Aprobación del Administrador)
+  [MOTOR DE COMPILACIÓN / EXPORTACIÓN DE LANDICY]
+         │
+         ├── Modo A (Headless JSON): Genera y actualiza '/data/content.json'
+         │   para sitios con frontend estático existente.
+         │
+         └── Modo B (Static Site Generator): Compila un paquete completo
+             (index.html + css/ + js/ + assets/) en la carpeta pública de destino.
+
+  [SITIOS PÚBLICOS ENTREGADOS]
+  - Proyecto 1: heruxec.com (Consume content.json sin tocar backend)
+  - Proyecto 2: cliente2.com (Archivos HTML/CSS nativos autogenerados)
+  - Seguridad: Inmune a inyecciones SQL públicas, ataques XML-RPC o exploits de plugins.
+
+--------------------------------------------------------------------------------
+3. MOTOR DE BLOQUES MODULARES (BUILDER DESDE CERO)
+--------------------------------------------------------------------------------
+Para evitar la degradación estética y el código inflado de los constructores 
+tradicionales (Elementor, Divi), LandiCy opera bajo "Bloques Vivos Semánticos":
+
+  a) Catálogo de Bloques Estandarizados:
+     - [Hero Banner]: Títulos, bajada, botones CTA, insignia flotante.
+     - [Pilares / Características]: Cuadrícula de 2, 3 o 4 tarjetas redondeadas.
+     - [Directorio / Equipo]: Fichas con avatar, biografía, redes y botón WhatsApp.
+     - [Módulo de Eventos]: Grilla interactiva con filtrado cronológico por año.
+     - [Tarifario / Servicios]: Modelos de mentoría, consultoría o membresías.
+     - [Formulario de Contacto]: Inputs validados con integración directa a email/API.
+     - [Footer Global]: Enlaces, copyright dinámico y accesos sociales.
+
+  b) Reglas de Diseño Blindado:
+     - El usuario no puede alterar arbitrariamente márgenes, tamaños caóticos de 
+       fuente o colores destructivos.
+     - Cada sitio define un "Theme Token" (Colores primarios, secundarios, fuentes) 
+       que los bloques adoptan automáticamente para preservar la armonía visual.
+
+--------------------------------------------------------------------------------
+4. MODELO DE DATOS EN BASE DE DATOS (MySQL)
+--------------------------------------------------------------------------------
+Estructura relacional optimizada para hosting compartido:
+
+-- 1. Tabla de Sitios / Proyectos (Multisitio)
+CREATE TABLE landicy_sitios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(60) UNIQUE NOT NULL,          -- ej: 'herux', 'consultora-ux'
+  nombre VARCHAR(120) NOT NULL,
+  dominio_asociado VARCHAR(180),             -- ej: 'heruxec.com'
+  ruta_exportacion VARCHAR(255) NOT NULL,    -- ej: '../public_html/'
+  tema_tokens_json JSON,                     -- paleta, fuentes, variantes
+  creado_el TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 2. Tabla de Usuarios y Roles
+CREATE TABLE landicy_usuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  email VARCHAR(150) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  rol ENUM('superadmin', 'admin', 'editor') NOT NULL DEFAULT 'editor',
+  creado_el TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 3. Asignación de Usuarios a Sitios
+CREATE TABLE landicy_permisos (
+  usuario_id INT NOT NULL,
+  sitio_id INT NOT NULL,
+  PRIMARY KEY (usuario_id, sitio_id),
+  FOREIGN KEY (usuario_id) REFERENCES landicy_usuarios(id) ON DELETE CASCADE,
+  FOREIGN KEY (sitio_id) REFERENCES landicy_sitios(id) ON DELETE CASCADE
+);
+
+-- 4. Contenidos, Bloques y Estados (Borrador vs Publicado)
+CREATE TABLE landicy_contenidos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  sitio_id INT NOT NULL,
+  version INT NOT NULL DEFAULT 1,
+  estructura_bloques_json LONGTEXT NOT NULL, -- Matriz ordenada de componentes
+  datos_contenido_json LONGTEXT NOT NULL,    -- Textos, enlaces, imágenes
+  estado ENUM('borrador', 'publicado') NOT NULL DEFAULT 'borrador',
+  actualizado_por INT NOT NULL,
+  fecha_modificacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (sitio_id) REFERENCES landicy_sitios(id) ON DELETE CASCADE,
+  FOREIGN KEY (actualizado_por) REFERENCES landicy_usuarios(id)
+);
+
+--------------------------------------------------------------------------------
+5. ESQUEMA DE DATOS COMPILED (content.json - Ejemplo herUX)
+--------------------------------------------------------------------------------
+{
+  "sitio": {
+    "id": "herux",
+    "titulo": "herUX - Comunidad de Mujeres en UX",
+    "idioma": "es"
+  },
+  "tema": {
+    "color_primario": "#8C247B",
+    "color_acento": "#E288CE",
+    "fuente_principal": "Plus Jakarta Sans"
+  },
+  "bloques": [
+    {
+      "tipo": "hero",
+      "activo": true,
+      "datos": {
+        "badge": "Comunidad de Mujeres en UX",
+        "titulo": "Empoderando el talento en la Experiencia de Usuario",
+        "subtitulo": "Espacio colaborativo e inclusivo para aplicar UX.",
+        "cta_texto": "Únete a la comunidad",
+        "cta_enlace": "/contacto"
+      }
+    },
+    {
+      "tipo": "eventos",
+      "activo": true,
+      "datos": {
+        "titulo_seccion": "Próximos Eventos & Talleres",
+        "items": [
+          {
+            "id": "ev-01",
+            "anio": 2026,
+            "titulo": "UX Day Ecuador 2026",
+            "modalidad": "Híbrido",
+            "fecha": "2026-11-15",
+            "enlace_registro": "https://..."
+          }
+        ]
+      }
+    },
+    {
+      "tipo": "voluntarios",
+      "activo": true,
+      "datos": {
+        "titulo_seccion": "Directorio de Voluntarios",
+        "items": [
+          {
+            "id": "vol-01",
+            "nombre": "Ana Morales",
+            "rol": "UX Research & Wellness",
+            "whatsapp": "+593999999999",
+            "portafolio": "https://...",
+            "linkedin": "https://..."
+          }
+        ]
+      }
+    }
+  ]
+}
+
+--------------------------------------------------------------------------------
+6. FLUJO OPERATIVO: CREAR Y PUBLICAR EN LANDICY
+--------------------------------------------------------------------------------
+Paso 1: Creación de un Nuevo Sitio
+  1. El Administrador ingresa al panel y pulsa "+ Nuevo Proyecto".
+  2. Define el nombre, slug y carpeta de exportación en el servidor.
+  3. Selecciona una plantilla base (ej. "Comunidad / Eventos", "Portafolio", "Landing").
+
+Paso 2: Edición Visual e Inserción de Bloques
+  1. El colaborador abre el lienzo visual del proyecto.
+  2. Puede reordenar bloques verticalmente (subir/bajar secciones tipo diapositiva).
+  3. Puede pulsar "+ Añadir Bloque" y seleccionar un componente pre-estilizado.
+  4. Los textos se editan haciendo clic directo sobre ellos ('contenteditable').
+  5. Pulsa "Guardar Borrador".
+
+Paso 3: Revisión y Compilación Final
+  1. El Administrador abre el modo "Vista Previa Comparativa".
+  2. Revisa las diferencias entre la versión en producción y la propuesta.
+  3. Si aprueba:
+     - El backend PHP actualiza el estado a 'publicado'.
+     - El compilador de LandiCy genera físicamente los archivos en la ruta de 
+       salida configurada (escribiendo 'content.json' o compilando las páginas HTML).
+  4. La web pública refleja los cambios de inmediato con cero tiempo de inactividad.
+
+--------------------------------------------------------------------------------
+7. LINEAMIENTOS TÉCNICOS INMUTABLES
+--------------------------------------------------------------------------------
+1. No Bloatware: Prohibido inyectar librerías pesadas en la salida estática final. 
+   El CSS y JS exportado deben ser semánticos, limpios y nativos.
+2. Inmunidad Frontal: Los visitantes públicos jamás interactúan con la base de datos 
+   ni con el intérprete de PHP.
+3. Compatibilidad Universal: Capaz de ejecutarse en cualquier hosting compartido 
+   sin necesidad de contenedores Docker, Daemons persistentes de Node ni dependencias npm.
+4. Respeto de Identidad: LandiCy no impone su marca en los sitios exportados; cada 
+   proyecto mantiene su autonomía e identidad intacta.
+================================================================================

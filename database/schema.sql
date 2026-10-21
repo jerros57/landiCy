@@ -1,0 +1,71 @@
+-- SPDX-License-Identifier: AGPL-3.0-or-later
+-- Copyright (c) 2026 LandiCy contributors.
+-- Primero selecciona una base de datos ya creada en cPanel / phpMyAdmin.
+-- En hosting compartido no se requieren privilegios CREATE DATABASE.
+
+CREATE TABLE IF NOT EXISTS users (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(120) NOT NULL,
+  email VARCHAR(190) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  role ENUM('superadmin', 'admin', 'editor') NOT NULL DEFAULT 'editor',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS sites (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(120) NOT NULL,
+  slug VARCHAR(60) NOT NULL UNIQUE,
+  domain_name VARCHAR(190) NULL,
+  theme_json JSON NOT NULL,
+  created_by BIGINT UNSIGNED NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (created_by) REFERENCES users(id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS site_users (
+  site_id BIGINT UNSIGNED NOT NULL,
+  user_id BIGINT UNSIGNED NOT NULL,
+  role ENUM('admin','editor') NOT NULL DEFAULT 'editor',
+  PRIMARY KEY (site_id, user_id),
+  FOREIGN KEY (site_id) REFERENCES sites(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS pages (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  site_id BIGINT UNSIGNED NOT NULL,
+  slug VARCHAR(100) NOT NULL DEFAULT 'index',
+  title VARCHAR(180) NOT NULL,
+  draft_json JSON NOT NULL,
+  published_json JSON NULL,
+  draft_version INT UNSIGNED NOT NULL DEFAULT 1,
+  published_version INT UNSIGNED NOT NULL DEFAULT 0,
+  edited_by BIGINT UNSIGNED NULL,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY ux_page_slug (site_id, slug),
+  FOREIGN KEY (site_id) REFERENCES sites(id) ON DELETE CASCADE,
+  FOREIGN KEY (edited_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS revisions (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  page_id BIGINT UNSIGNED NOT NULL,
+  version INT UNSIGNED NOT NULL,
+  blocks_json JSON NOT NULL,
+  author_id BIGINT UNSIGNED NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE KEY ux_rev (page_id, version),
+  FOREIGN KEY (page_id) REFERENCES pages(id) ON DELETE CASCADE,
+  FOREIGN KEY (author_id) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS site_scans (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  site_id BIGINT UNSIGNED NOT NULL,
+  source_kind ENUM('directory','zip') NOT NULL,
+  source_ref VARCHAR(255) NOT NULL,
+  files_json JSON NOT NULL,
+  scanned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (site_id) REFERENCES sites(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
