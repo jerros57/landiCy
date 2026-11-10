@@ -1,0 +1,10 @@
+<?php
+// SPDX-License-Identifier: AGPL-3.0-or-later
+declare(strict_types=1);
+require __DIR__.'/../landicy-private/src/bootstrap.php';
+use LandiCy\DraftTrash;use LandiCy\Access;
+$n=0;function ok063(bool $v,string $label):void{global $n;if(!$v)throw new RuntimeException('FAIL '.$label);$n++;echo "PASS $label\n";}
+$dir=sys_get_temp_dir().'/landicy-trash-'.bin2hex(random_bytes(6));mkdir($dir,0700);file_put_contents($dir.'/content.txt','unchanged');
+try{ok063(!DraftTrash::contains($dir,1),'New draft active');DraftTrash::change($dir,1,7,false);ok063(DraftTrash::contains($dir,1),'Trash marker created');ok063(file_get_contents($dir.'/content.txt')==='unchanged','Content not deleted');$duplicate=false;try{DraftTrash::change($dir,1,7,false);}catch(RuntimeException){$duplicate=true;}ok063($duplicate,'Duplicate removal rejected');DraftTrash::change($dir,1,7,true);ok063(!DraftTrash::contains($dir,1),'Restore removes only marker');ok063(file_get_contents($dir.'/content.txt')==='unchanged','Restore leaves content unchanged');$invalid=false;try{DraftTrash::contains($dir,-1);}catch(InvalidArgumentException){$invalid=true;}ok063($invalid,'Invalid site refused');ok063(DraftTrash::published([['published_version'=>1]]),'Any published page blocks removal');ok063(!DraftTrash::published([['published_version'=>0]]),'Unpublished page eligible');foreach(['admin','editor'] as $role)ok063(!Access::allows('draft-trash',$role,true),'Only superadmin can remove entire project');ok063(Access::allows('draft-restore','superadmin'),'Superadmin may restore');$site=['id'=>1,'name'=>'Draft','theme_json'=>'{}'];$pages=[['id'=>1,'draft_version'=>1,'published_version'=>0]];ok063(DraftTrash::token($site,$pages,false)!==DraftTrash::token($site,$pages,true),'State changes confirmation token');$new=$pages;$new[0]['draft_version']=2;ok063(DraftTrash::token($site,$pages,false)!==DraftTrash::token($site,$new,false),'Changed page invalidates confirmation');}
+finally{unlink($dir.'/content.txt');if(is_file($dir.'/draft-trash/.lock'))unlink($dir.'/draft-trash/.lock');if(is_dir($dir.'/draft-trash'))rmdir($dir.'/draft-trash');rmdir($dir);}
+echo "$n draft trash checks PASS\n";

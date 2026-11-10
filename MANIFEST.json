@@ -1,0 +1,603 @@
+{
+  "version": "0.6.3",
+  "baseline_version": "0.6.2",
+  "database_migration": false,
+  "hash_algorithm": "SHA-256",
+  "manifest_integrity": "MANIFEST.json is covered by the externally hashed source ZIP.",
+  "update_files": [
+    "landicy-private/src/DraftTrash.php",
+    "landicy-private/src/Access.php",
+    "landicy-private/src/Views.php",
+    "public_html/landicy-admin/index.php"
+  ],
+  "files": [
+    {
+      "file": ".gitignore",
+      "sha256": "203804a160553d2b2538a647cec72b4168b666dacfd22934fe3da53476d18e4f",
+      "bytes": 108,
+      "update": false,
+      "baseline_sha256": "203804a160553d2b2538a647cec72b4168b666dacfd22934fe3da53476d18e4f"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "sha256": "98b2468921bd85d8606e59710bb2761f79b0c69239742f87b23bc9d4f44f6b6f",
+      "bytes": 5658,
+      "update": false,
+      "baseline_sha256": "77601e251908463cde12e03e8a41b4c32ad205b2108c2850ec20939582d156b3"
+    },
+    {
+      "file": "IMPLEMENTACION.md",
+      "sha256": "a83332749b4641f279cd35f5671201344f60dace7edd8728a101fa3dd5052a02",
+      "bytes": 758,
+      "update": false,
+      "baseline_sha256": "df19ccace18b2a86c7e52171840d86af90d576e06d43c60837bb7e06d7fc8eb4"
+    },
+    {
+      "file": "INSTALL.md",
+      "sha256": "f795687a4c670ebb51998e49afa1cade8ccd73940704dfa808fdb0c11380e255",
+      "bytes": 1093,
+      "update": false,
+      "baseline_sha256": "d7d5983163675dcfe4c181bebe33ad254f554f624369e0abcb20e92123295f0e"
+    },
+    {
+      "file": "README.md",
+      "sha256": "63d412c6ddcf2da543aa0030c873a0968bfeb948517c079454ad5420cf577484",
+      "bytes": 1802,
+      "update": false,
+      "baseline_sha256": "e49edfaa3f0ac9cd3f72a0ad85381acd8ae951b8ef1bf9c04bec4a93fe76cb02"
+    },
+    {
+      "file": "ROADMAP.md",
+      "sha256": "8757bf1809bf18fc3a8c3094c8be6ce30f12837ff3be56baea6c0f71ca3593bc",
+      "bytes": 1468,
+      "update": false,
+      "baseline_sha256": "8757bf1809bf18fc3a8c3094c8be6ce30f12837ff3be56baea6c0f71ca3593bc"
+    },
+    {
+      "file": "ROLLBACK.md",
+      "sha256": "b13ec0c9573c5baca2435a9dbb2d54444e96a4da1fb143d7c6ac9356d06d041c",
+      "bytes": 606,
+      "update": false,
+      "baseline_sha256": "8a940a2530ff14aa139acf46a1c6e2fb68d7b6a34a46669dcf8b28ce4554f2d8"
+    },
+    {
+      "file": "TEST-RESULTS.md",
+      "sha256": "38166db6bb281029ae477389ee1bd6234f5fbf597c217b068f24e327cd3057fe",
+      "bytes": 746,
+      "update": false,
+      "baseline_sha256": "106ec90c58e4101b6990140ba9718a4195c52ea78f8e7296fc91f0ea25b71975"
+    },
+    {
+      "file": "VERSION",
+      "sha256": "c9f56eb9348cbc8345bdaea7ca24c9f960e1598af05472794760a2682ff07a8c",
+      "bytes": 6,
+      "update": false,
+      "baseline_sha256": "a466ef209f5c3aee5ff0c702e2e9d5cced4783d2a655e8ab66330f21a5557b3f"
+    },
+    {
+      "file": "landicy-private/CONTRIBUTING.md",
+      "sha256": "03be1e62bbdafbf452c83cb9bb6ab405bc76e016ffabc7d69f1b4d9ec1b1a304",
+      "bytes": 1454,
+      "update": false,
+      "baseline_sha256": "03be1e62bbdafbf452c83cb9bb6ab405bc76e016ffabc7d69f1b4d9ec1b1a304"
+    },
+    {
+      "file": "landicy-private/COPYING",
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "bytes": 34523,
+      "update": false,
+      "baseline_sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    {
+      "file": "landicy-private/LICENSE",
+      "sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0",
+      "bytes": 34523,
+      "update": false,
+      "baseline_sha256": "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+    },
+    {
+      "file": "landicy-private/LICENSE-OUTPUT-EXCEPTION.md",
+      "sha256": "2bd8339401272726b803554a5eef7a8cde745c7b8f847b084abb46d821b95384",
+      "bytes": 1393,
+      "update": false,
+      "baseline_sha256": "2bd8339401272726b803554a5eef7a8cde745c7b8f847b084abb46d821b95384"
+    },
+    {
+      "file": "landicy-private/LICENSE-POLICY.md",
+      "sha256": "8d19f20fe33ab9f67ef51e556d93f722d91e7143faa7ee9363b951f3a9d2d022",
+      "bytes": 2003,
+      "update": false,
+      "baseline_sha256": "8d19f20fe33ab9f67ef51e556d93f722d91e7143faa7ee9363b951f3a9d2d022"
+    },
+    {
+      "file": "landicy-private/README.md",
+      "sha256": "767fffdfced8a5d9ed6663af44c8dcf6fe799b8108defbcea9338f3e31e0785c",
+      "bytes": 390,
+      "update": false,
+      "baseline_sha256": "767fffdfced8a5d9ed6663af44c8dcf6fe799b8108defbcea9338f3e31e0785c"
+    },
+    {
+      "file": "landicy-private/bin/create-admin.php",
+      "sha256": "6e183c8af814f7a2b790f8a304f79f037ae778c90e72a0f3fb01c14eaf99ae7d",
+      "bytes": 1536,
+      "update": false,
+      "baseline_sha256": "6e183c8af814f7a2b790f8a304f79f037ae778c90e72a0f3fb01c14eaf99ae7d"
+    },
+    {
+      "file": "landicy-private/config.example.php",
+      "sha256": "21ab8c3a8b677a4f71bb3210546da0f3ec6488fbcec4453c1f6b0855ed966f83",
+      "bytes": 895,
+      "update": false,
+      "baseline_sha256": "21ab8c3a8b677a4f71bb3210546da0f3ec6488fbcec4453c1f6b0855ed966f83"
+    },
+    {
+      "file": "landicy-private/database/schema.sql",
+      "sha256": "864df23af37cd1f35851a1a79171db999a95bfa7460e5d7b4f5555df871a2a56",
+      "bytes": 2762,
+      "update": false,
+      "baseline_sha256": "864df23af37cd1f35851a1a79171db999a95bfa7460e5d7b4f5555df871a2a56"
+    },
+    {
+      "file": "landicy-private/demo/ejemplo-hosting/css/style.css",
+      "sha256": "359385ab5dc04ea3cf91273b06c9d3ce9e899b245dd4cb20de274b80c895b5ea",
+      "bytes": 72,
+      "update": false,
+      "baseline_sha256": "359385ab5dc04ea3cf91273b06c9d3ce9e899b245dd4cb20de274b80c895b5ea"
+    },
+    {
+      "file": "landicy-private/demo/ejemplo-hosting/index.html",
+      "sha256": "02bb43e03591918a2dd73fee1808491ae3cfd9ade7e877e9effc5e892cbe6962",
+      "bytes": 377,
+      "update": false,
+      "baseline_sha256": "02bb43e03591918a2dd73fee1808491ae3cfd9ade7e877e9effc5e892cbe6962"
+    },
+    {
+      "file": "landicy-private/demo/ejemplo-hosting/js/app.js",
+      "sha256": "33c789dfdaf42244e8c29433c4c12a825ceeceb014863a6e9221db56dfa3d053",
+      "bytes": 71,
+      "update": false,
+      "baseline_sha256": "33c789dfdaf42244e8c29433c4c12a825ceeceb014863a6e9221db56dfa3d053"
+    },
+    {
+      "file": "landicy-private/docs/ARQUITECTURA-v050.md",
+      "sha256": "cff775a5676152fdb20f744ece6e5c53863e76a3c3de3f6dac28f58b4a380dbc",
+      "bytes": 3391,
+      "update": false,
+      "baseline_sha256": "cff775a5676152fdb20f744ece6e5c53863e76a3c3de3f6dac28f58b4a380dbc"
+    },
+    {
+      "file": "landicy-private/docs/ARQUITECTURA-v051.md",
+      "sha256": "289c2143674a12e2afaaab80e8aecdda257f77463e57bcc58ab9d4d81ab70b3a",
+      "bytes": 2661,
+      "update": false,
+      "baseline_sha256": "289c2143674a12e2afaaab80e8aecdda257f77463e57bcc58ab9d4d81ab70b3a"
+    },
+    {
+      "file": "landicy-private/docs/ARQUITECTURA-v052.md",
+      "sha256": "24f85713d4f953cfeb7a137ba8a288048a1952741bbd97cef6d2da8263109ff0",
+      "bytes": 2268,
+      "update": false,
+      "baseline_sha256": "24f85713d4f953cfeb7a137ba8a288048a1952741bbd97cef6d2da8263109ff0"
+    },
+    {
+      "file": "landicy-private/docs/HOJA_DE_RUTA.md",
+      "sha256": "2b71a2739de97ee0696065f730be23184f586149dcf1d391611034a6579ef866",
+      "bytes": 2436,
+      "update": false,
+      "baseline_sha256": "2b71a2739de97ee0696065f730be23184f586149dcf1d391611034a6579ef866"
+    },
+    {
+      "file": "landicy-private/docs/INSTALACION_CPANEL.md",
+      "sha256": "5f71547ca468874ef4083a24b6ac5ee33b0020363aa3880e64b6fc52ef709823",
+      "bytes": 6773,
+      "update": false,
+      "baseline_sha256": "5f71547ca468874ef4083a24b6ac5ee33b0020363aa3880e64b6fc52ef709823"
+    },
+    {
+      "file": "landicy-private/docs/SEGURIDAD.md",
+      "sha256": "22da4d2896afc08bbc8fbe71873e24e36634fc1e41adce1fce7512fa75ed6380",
+      "bytes": 2114,
+      "update": false,
+      "baseline_sha256": "22da4d2896afc08bbc8fbe71873e24e36634fc1e41adce1fce7512fa75ed6380"
+    },
+    {
+      "file": "landicy-private/docs/especificacion-original.txt",
+      "sha256": "74bb5d64ecc2a66f363aea91585beb7eb36ec7fff1c0c29a78a9797a241ced96",
+      "bytes": 10022,
+      "update": false,
+      "baseline_sha256": "74bb5d64ecc2a66f363aea91585beb7eb36ec7fff1c0c29a78a9797a241ced96"
+    },
+    {
+      "file": "landicy-private/scan-roots.example.php",
+      "sha256": "649c112e26666548ab41e06009d993e55e19879b6cc613c98b43cff9ef85d1e6",
+      "bytes": 271,
+      "update": false,
+      "baseline_sha256": "649c112e26666548ab41e06009d993e55e19879b6cc613c98b43cff9ef85d1e6"
+    },
+    {
+      "file": "landicy-private/src/Access.php",
+      "sha256": "c96145c1fe2641a755f29a147f6f5524644066326af3c18e942c54956aec6cef",
+      "bytes": 763,
+      "update": true,
+      "baseline_sha256": "087657e5d3532c2cd66fc81af3545117769bbc66310680c540ab83ab77c429d8"
+    },
+    {
+      "file": "landicy-private/src/Builder.php",
+      "sha256": "d5713fe41ab646e654fd58d213b3f71abc5590b59958bbde52f3f76b3629c13e",
+      "bytes": 48950,
+      "update": false,
+      "baseline_sha256": "d5713fe41ab646e654fd58d213b3f71abc5590b59958bbde52f3f76b3629c13e"
+    },
+    {
+      "file": "landicy-private/src/DraftCode.php",
+      "sha256": "58334318542c1c1804e5e6e2ed4849d2a4a5373709d0e82f3defb16087437fbe",
+      "bytes": 7819,
+      "update": false,
+      "baseline_sha256": "58334318542c1c1804e5e6e2ed4849d2a4a5373709d0e82f3defb16087437fbe"
+    },
+    {
+      "file": "landicy-private/src/EditorChrome.php",
+      "sha256": "33db8613a1b81cde8c1430312b6237536a63d3afc6af52f3d31bd97a74657c69",
+      "bytes": 7984,
+      "update": false,
+      "baseline_sha256": "33db8613a1b81cde8c1430312b6237536a63d3afc6af52f3d31bd97a74657c69"
+    },
+    {
+      "file": "landicy-private/src/ImportedCanvas.php",
+      "sha256": "4ef8ba8309ac5a0b3c6990ca629362e32b2d212c8fc93ecdbf3a565d62a8ab64",
+      "bytes": 11770,
+      "update": false,
+      "baseline_sha256": "4ef8ba8309ac5a0b3c6990ca629362e32b2d212c8fc93ecdbf3a565d62a8ab64"
+    },
+    {
+      "file": "landicy-private/src/Importer.php",
+      "sha256": "a099c373f1d5dc2ee19d27029b6b8849659dd072d46beeeca29fd956b9ddb22b",
+      "bytes": 22559,
+      "update": false,
+      "baseline_sha256": "a099c373f1d5dc2ee19d27029b6b8849659dd072d46beeeca29fd956b9ddb22b"
+    },
+    {
+      "file": "landicy-private/src/Layout.php",
+      "sha256": "ce76ca0713f11e72c9bb8a3558d47a89f3a48d0fa274ba61c88a7130b0484d22",
+      "bytes": 5563,
+      "update": false,
+      "baseline_sha256": "ce76ca0713f11e72c9bb8a3558d47a89f3a48d0fa274ba61c88a7130b0484d22"
+    },
+    {
+      "file": "landicy-private/src/Media.php",
+      "sha256": "6544d2b802a65cc43206443859814676e4b692fc0067a27d3101951e89ca213e",
+      "bytes": 3793,
+      "update": false,
+      "baseline_sha256": "6544d2b802a65cc43206443859814676e4b692fc0067a27d3101951e89ca213e"
+    },
+    {
+      "file": "landicy-private/src/Pages.php",
+      "sha256": "a4bf46a3c9037aaf6adbbd37ce540ee5d1ce7ece5894aebc740ff7db79ecd4d8",
+      "bytes": 2916,
+      "update": false,
+      "baseline_sha256": "a4bf46a3c9037aaf6adbbd37ce540ee5d1ce7ece5894aebc740ff7db79ecd4d8"
+    },
+    {
+      "file": "landicy-private/src/Scanner.php",
+      "sha256": "6a6efefe0cbd4144a284a20f9990e7cd439f7c12b0e0e5266ff6e770d552e51f",
+      "bytes": 9839,
+      "update": false,
+      "baseline_sha256": "6a6efefe0cbd4144a284a20f9990e7cd439f7c12b0e0e5266ff6e770d552e51f"
+    },
+    {
+      "file": "landicy-private/src/ScriptPreview.php",
+      "sha256": "425650fdbde8bba944f3376a11238bb9e80860edaf96444d9f37eb43303646ab",
+      "bytes": 5594,
+      "update": false,
+      "baseline_sha256": "425650fdbde8bba944f3376a11238bb9e80860edaf96444d9f37eb43303646ab"
+    },
+    {
+      "file": "landicy-private/src/SourceRoots.php",
+      "sha256": "3a3b569af82993d93ac3ec7ccc0182fcf114bb76f8ee9be088815033ace7414e",
+      "bytes": 2689,
+      "update": false,
+      "baseline_sha256": "3a3b569af82993d93ac3ec7ccc0182fcf114bb76f8ee9be088815033ace7414e"
+    },
+    {
+      "file": "landicy-private/src/TemplateParts.php",
+      "sha256": "c9a0814c5a6ef573da4f72ce825a835e09c30dae8d9e282c0d1ac5762296d7bc",
+      "bytes": 779,
+      "update": false,
+      "baseline_sha256": "c9a0814c5a6ef573da4f72ce825a835e09c30dae8d9e282c0d1ac5762296d7bc"
+    },
+    {
+      "file": "landicy-private/src/Views.php",
+      "sha256": "032b93d018c99d8413c88a50955d2d079e26ce3d4fc51c396e338e952b9f18d1",
+      "bytes": 2907,
+      "update": true,
+      "baseline_sha256": "21a3cde841e28558b30ff1b68ea032302105bff92dd81bd1477f3716a8ea4197"
+    },
+    {
+      "file": "landicy-private/src/bootstrap.php",
+      "sha256": "df032e5bb3e252c190a4e2daef4775ae2026bcd5b70080975c66cd246a0ec752",
+      "bytes": 4661,
+      "update": false,
+      "baseline_sha256": "df032e5bb3e252c190a4e2daef4775ae2026bcd5b70080975c66cd246a0ec752"
+    },
+    {
+      "file": "landicy-private/tests/README.md",
+      "sha256": "08e44f87494a97482cf5af332242b3894a49a98a1b773d5853a24d298a82d0f9",
+      "bytes": 480,
+      "update": false,
+      "baseline_sha256": "08e44f87494a97482cf5af332242b3894a49a98a1b773d5853a24d298a82d0f9"
+    },
+    {
+      "file": "landicy-private/tests/smoke.php",
+      "sha256": "9a1913cdbf0e27a23c7e07b030cff94ce61d6301aadaa70c34e7297e39fc5ec0",
+      "bytes": 1906,
+      "update": false,
+      "baseline_sha256": "9a1913cdbf0e27a23c7e07b030cff94ce61d6301aadaa70c34e7297e39fc5ec0"
+    },
+    {
+      "file": "public_html/landicy-admin/assets/admin.css",
+      "sha256": "587fb70b700af936242bba8dab65fe397d46218bf82ec00c0497cfdc390d6165",
+      "bytes": 24008,
+      "update": false,
+      "baseline_sha256": "587fb70b700af936242bba8dab65fe397d46218bf82ec00c0497cfdc390d6165"
+    },
+    {
+      "file": "public_html/landicy-admin/assets/editor.js",
+      "sha256": "4a5d9f859bfa4abdd98bd5542bfe3f503f9fd607c7859d007c3a7b2ebb5f7d0b",
+      "bytes": 66286,
+      "update": false,
+      "baseline_sha256": "4a5d9f859bfa4abdd98bd5542bfe3f503f9fd607c7859d007c3a7b2ebb5f7d0b"
+    },
+    {
+      "file": "public_html/landicy-admin/assets/imported-editor.js",
+      "sha256": "ff0efd6e86a566b6772999427d2f1d0276579d23f9c1813a2dfc6d7602abb3b8",
+      "bytes": 24458,
+      "update": false,
+      "baseline_sha256": "ff0efd6e86a566b6772999427d2f1d0276579d23f9c1813a2dfc6d7602abb3b8"
+    },
+    {
+      "file": "public_html/landicy-admin/assets/landicy-mark.svg",
+      "sha256": "ae48f199508876ec4986fd0a46473e0d52b2352e143afeee7172b633b71e6c6a",
+      "bytes": 117,
+      "update": false,
+      "baseline_sha256": "ae48f199508876ec4986fd0a46473e0d52b2352e143afeee7172b633b71e6c6a"
+    },
+    {
+      "file": "public_html/landicy-admin/assets/sandbox-preview.js",
+      "sha256": "130e3b6d189e3ae4e48771dc7f93891e026c2b624120346daf511836919b258a",
+      "bytes": 2552,
+      "update": false,
+      "baseline_sha256": "130e3b6d189e3ae4e48771dc7f93891e026c2b624120346daf511836919b258a"
+    },
+    {
+      "file": "public_html/landicy-admin/assets/site-runtime.js",
+      "sha256": "87013b8179f1e23a9f809b4f8df6f65b389289eee015fc0cdb12e2ab7d456670",
+      "bytes": 1901,
+      "update": false,
+      "baseline_sha256": "87013b8179f1e23a9f809b4f8df6f65b389289eee015fc0cdb12e2ab7d456670"
+    },
+    {
+      "file": "public_html/landicy-admin/index.php",
+      "sha256": "208fd059c0d554725bafb1e0a7c99022a0ec73a7661e4c7a5f3fcca5f75e3eab",
+      "bytes": 84563,
+      "update": true,
+      "baseline_sha256": "2e63a04aa7ae06e8a61f1e34ceefb8edd710b38e238701ae31b7fa4b2e1fe262"
+    },
+    {
+      "file": "release-files.json",
+      "sha256": "efc66d1347ef9cc5218149f0f15f469189232c46e95f6ca96b7219bce19c17ce",
+      "bytes": 3309,
+      "update": false,
+      "baseline_sha256": "2daedda7442cf2fd0fb1c19945b855a3610802fece03203cc078633b468950ff"
+    },
+    {
+      "file": "tests/http.php",
+      "sha256": "72423a8cb91896a688849f1c848b6aabf2b22e82b46dd7faad5f0744754135ed",
+      "bytes": 8779,
+      "update": false,
+      "baseline_sha256": "72423a8cb91896a688849f1c848b6aabf2b22e82b46dd7faad5f0744754135ed"
+    },
+    {
+      "file": "tests/http050.php",
+      "sha256": "d1cf5d72ecc2482f4ad2814816a327dd135ac7db0ee4537152432c511a8b4465",
+      "bytes": 4440,
+      "update": false,
+      "baseline_sha256": "d1cf5d72ecc2482f4ad2814816a327dd135ac7db0ee4537152432c511a8b4465"
+    },
+    {
+      "file": "tests/http051.php",
+      "sha256": "1db8debd2fa4af83fcee0efe14e8dc21838af1c0f41f53f754bf26a4f5224762",
+      "bytes": 7654,
+      "update": false,
+      "baseline_sha256": "1db8debd2fa4af83fcee0efe14e8dc21838af1c0f41f53f754bf26a4f5224762"
+    },
+    {
+      "file": "tests/http052.php",
+      "sha256": "c8f9ed3432e53e837bf98be09eef9685d7e6ea40599954b932df587c19db3e0a",
+      "bytes": 4508,
+      "update": false,
+      "baseline_sha256": "c8f9ed3432e53e837bf98be09eef9685d7e6ea40599954b932df587c19db3e0a"
+    },
+    {
+      "file": "tests/integration.php",
+      "sha256": "5cec5e588cc603c545a0d0fa74ad545419d18c0a07e4a23b9ed1e43a5cd4e755",
+      "bytes": 8434,
+      "update": false,
+      "baseline_sha256": "5cec5e588cc603c545a0d0fa74ad545419d18c0a07e4a23b9ed1e43a5cd4e755"
+    },
+    {
+      "file": "tests/regression.php",
+      "sha256": "b722a998ed3f2cf8ca19fe30896ae26ed6d1a1d45c456b8f3247ffcb4773aef1",
+      "bytes": 2078,
+      "update": false,
+      "baseline_sha256": "b722a998ed3f2cf8ca19fe30896ae26ed6d1a1d45c456b8f3247ffcb4773aef1"
+    },
+    {
+      "file": "tests/setup-isolated.php",
+      "sha256": "a2b0409318452ee3ef06c14664fa32ad549dd0784b3eaf5409fc549c64d7a63f",
+      "bytes": 3807,
+      "update": false,
+      "baseline_sha256": "a2b0409318452ee3ef06c14664fa32ad549dd0784b3eaf5409fc549c64d7a63f"
+    },
+    {
+      "file": "tests/static-checks.cjs",
+      "sha256": "47783b3031dd8ae68465bf72c8f9c4af675767ba22b6e11901068b65cc73cfc3",
+      "bytes": 1278,
+      "update": false,
+      "baseline_sha256": "47783b3031dd8ae68465bf72c8f9c4af675767ba22b6e11901068b65cc73cfc3"
+    },
+    {
+      "file": "tests/ui-browser.cjs",
+      "sha256": "0b3931ff0779463f4ceb9af5e3128de24481a5ed26943b30e8966ba4294ac62e",
+      "bytes": 10616,
+      "update": false,
+      "baseline_sha256": "0b3931ff0779463f4ceb9af5e3128de24481a5ed26943b30e8966ba4294ac62e"
+    },
+    {
+      "file": "tests/ui-imported.cjs",
+      "sha256": "a9581b00ad296f5987f9c478299bb647594f398609fd7e3973847ed503b1c10d",
+      "bytes": 8587,
+      "update": false,
+      "baseline_sha256": "a9581b00ad296f5987f9c478299bb647594f398609fd7e3973847ed503b1c10d"
+    },
+    {
+      "file": "tests/ui-runtime.cjs",
+      "sha256": "7cf9f0427c426cc87ac6fe646b09b3cfbf951924572ceefbae0e46034d81e281",
+      "bytes": 3353,
+      "update": false,
+      "baseline_sha256": "7cf9f0427c426cc87ac6fe646b09b3cfbf951924572ceefbae0e46034d81e281"
+    },
+    {
+      "file": "tests/ui-sandbox.cjs",
+      "sha256": "4c2988cc1a8e25713c0899eb41786b002c4164f3d2e2c3d9a955cbf29621ad3c",
+      "bytes": 5148,
+      "update": false,
+      "baseline_sha256": "4c2988cc1a8e25713c0899eb41786b002c4164f3d2e2c3d9a955cbf29621ad3c"
+    },
+    {
+      "file": "tests/v050.php",
+      "sha256": "9c30e38fd6397c4dc8a7d69713572cd31919898b7c4f16855e3e01bb64225a03",
+      "bytes": 6075,
+      "update": false,
+      "baseline_sha256": "9c30e38fd6397c4dc8a7d69713572cd31919898b7c4f16855e3e01bb64225a03"
+    },
+    {
+      "file": "tests/v051.php",
+      "sha256": "c89c5c11d3f0957707b5f5a81d18c374ef5f668209813e292a6f5cc304a90b0d",
+      "bytes": 7166,
+      "update": false,
+      "baseline_sha256": "c89c5c11d3f0957707b5f5a81d18c374ef5f668209813e292a6f5cc304a90b0d"
+    },
+    {
+      "file": "tests/v052.php",
+      "sha256": "d3b8016f556e59fbedb88612eb7ffb50edf01763e5eb108b2fcfd4a63e70f612",
+      "bytes": 3696,
+      "update": false,
+      "baseline_sha256": "d3b8016f556e59fbedb88612eb7ffb50edf01763e5eb108b2fcfd4a63e70f612"
+    },
+    {
+      "file": "tools/package-release.ps1",
+      "sha256": "c6514cbf9f9278f7bde0488fe818b1e887a9b0785effe2a7520e51516ac3ffff",
+      "bytes": 2564,
+      "update": false,
+      "baseline_sha256": "43b798757424ed6526b9650deea1c3a9e7b31f26a9ee0a5b8b6ad5c7546fbf01"
+    },
+    {
+      "file": "landicy-private/src/RichText.php",
+      "sha256": "6e87d6c09d89eb1e922522ba0b2b0f1fbab24bd03480541f891b26895545595e",
+      "bytes": 1834,
+      "update": false,
+      "baseline_sha256": "6e87d6c09d89eb1e922522ba0b2b0f1fbab24bd03480541f891b26895545595e"
+    },
+    {
+      "file": "landicy-private/src/CanvasUI.php",
+      "sha256": "752f825355f1476e06ae74a78f9fd5342595eb1653992fe0c7ea8001f2fbc6bd",
+      "bytes": 2342,
+      "update": false,
+      "baseline_sha256": "752f825355f1476e06ae74a78f9fd5342595eb1653992fe0c7ea8001f2fbc6bd"
+    },
+    {
+      "file": "public_html/landicy-admin/assets/canvas-tools.js",
+      "sha256": "44d4014c84c91b6c2dad7b2cdf5e416a8bbddb3464ca807010f64016ac2042eb",
+      "bytes": 22140,
+      "update": false,
+      "baseline_sha256": "44d4014c84c91b6c2dad7b2cdf5e416a8bbddb3464ca807010f64016ac2042eb"
+    },
+    {
+      "file": "tests/v060.php",
+      "sha256": "e66bc7d8206f5c3d602c27b2bd5942bb114adbfdfd824cfce5e780bb8029085c",
+      "bytes": 5058,
+      "update": false,
+      "baseline_sha256": "e66bc7d8206f5c3d602c27b2bd5942bb114adbfdfd824cfce5e780bb8029085c"
+    },
+    {
+      "file": "tests/http060.php",
+      "sha256": "c53bdecaf9c3e2672c1aad2c0d61d0b9ffcb47c0dcb562edb16365dcdfd87941",
+      "bytes": 4945,
+      "update": false,
+      "baseline_sha256": "c53bdecaf9c3e2672c1aad2c0d61d0b9ffcb47c0dcb562edb16365dcdfd87941"
+    },
+    {
+      "file": "tests/ui-canvas.cjs",
+      "sha256": "cf5b11e1a659ee30258cb6e1bf469bac0d19bcc8c01acfcb2de3cb73105896a7",
+      "bytes": 17121,
+      "update": false,
+      "baseline_sha256": "cf5b11e1a659ee30258cb6e1bf469bac0d19bcc8c01acfcb2de3cb73105896a7"
+    },
+    {
+      "file": "landicy-private/docs/MANUAL-v060.md",
+      "sha256": "ebd0bae36813486771d69bf848bd36fadea442827b0ab108f7860fb14c46a286",
+      "bytes": 4914,
+      "update": false,
+      "baseline_sha256": "ff243c264d8ccb48052c67c03cbcc75203d48705c8bf1fe3fb5ff52c43485a2f"
+    },
+    {
+      "file": "landicy-private/docs/ARQUITECTURA-v060.md",
+      "sha256": "80f697718664493739b7d0d10856d322ea9057fb4884bd7a811075d1f985d24b",
+      "bytes": 3247,
+      "update": false,
+      "baseline_sha256": "80f697718664493739b7d0d10856d322ea9057fb4884bd7a811075d1f985d24b"
+    },
+    {
+      "file": "tests/ui-performance.cjs",
+      "sha256": "2fe5259bcdac724ffc8bffd94b344030601e10c7bbeb603a1a3c74a330b15bfe",
+      "bytes": 3611,
+      "update": false,
+      "baseline_sha256": "2fe5259bcdac724ffc8bffd94b344030601e10c7bbeb603a1a3c74a330b15bfe"
+    },
+    {
+      "file": "tests/v062.php",
+      "sha256": "030a4de41fa87de39adf45b0b01bfdd5821a96a490fc94698a96a2cb8f7cd189",
+      "bytes": 1420,
+      "update": false,
+      "baseline_sha256": "030a4de41fa87de39adf45b0b01bfdd5821a96a490fc94698a96a2cb8f7cd189"
+    },
+    {
+      "file": "landicy-private/src/DraftTrash.php",
+      "sha256": "446011c8d4eb47b5971f3f700c16eee646be7e08eee47ff5212cafda28cd0f8e",
+      "bytes": 2922,
+      "update": true,
+      "baseline_sha256": null
+    },
+    {
+      "file": "tests/v063.php",
+      "sha256": "56302455ad715d6fb9ab6773caaae8ea11d6d2a4029ae191398907e501472a6e",
+      "bytes": 2159,
+      "update": false,
+      "baseline_sha256": null
+    },
+    {
+      "file": "tests/http063.php",
+      "sha256": "c781736fa6b1a7439540009f3476657443b739c40192e435ef01b46aea393fa9",
+      "bytes": 3592,
+      "update": false,
+      "baseline_sha256": null
+    },
+    {
+      "file": "tests/ui-trash.cjs",
+      "sha256": "6a29893147d33f3a5f4c77916a336a71b9962bbd256393d7d2f015dba49472e0",
+      "bytes": 3866,
+      "update": false,
+      "baseline_sha256": null
+    }
+  ]
+}

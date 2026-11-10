@@ -87,7 +87,8 @@ final class Scanner {
         if ($target === false || !is_dir($target) || !self::within($root, $target)) throw new InvalidArgumentException('La carpeta no pertenece a la raíz permitida.');
         $files = [];
         $total = 0;
-        $it = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($target, \FilesystemIterator::SKIP_DOTS), \RecursiveIteratorIterator::SELF_FIRST);
+        $entries=new \RecursiveCallbackFilterIterator(new \RecursiveDirectoryIterator($target, \FilesystemIterator::SKIP_DOTS),static function($entry)use($target){if($entry->isLink())return false;$name=str_replace('\\','/',substr($entry->getPathname(),strlen($target)+1));return Importer::safePath($name.($entry->isDir()?'/placeholder.html':''));});
+        $it = new \RecursiveIteratorIterator($entries, \RecursiveIteratorIterator::SELF_FIRST);
         foreach ($it as $entry) {
             if ($it->getDepth() > 8) throw new InvalidArgumentException('Profundidad máxima de carpetas: 8.');
             if ($entry->isLink()) { if ($entry->isDir()) $it->next(); continue; }
@@ -95,7 +96,7 @@ final class Scanner {
             $absolute = $entry->getRealPath();
             if ($absolute === false || !self::within($target, $absolute)) continue;
             $name = str_replace('\\', '/', substr($absolute, strlen($target) + 1));
-            if (!self::isSafePath($name) || !self::allowed($name)) continue;
+            if (!self::isSafePath($name) || !Importer::safePath($name) || !self::allowed($name)) continue;
             if (count($files) >= self::MAX_FILES) throw new InvalidArgumentException('Se superó el límite de archivos.');
             $size = $entry->getSize();
             if ($size > self::MAX_FILE_BYTES) throw new InvalidArgumentException('Archivo demasiado grande: ' . $name);

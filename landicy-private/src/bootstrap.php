@@ -46,6 +46,11 @@ function e(mixed $value): string {
 
 function start_session(): void {
     if (session_status() === PHP_SESSION_ACTIVE) return;
+    // Keep LandiCy sessions in its private storage, independently of shared hosting /tmp.
+    $storage=rtrim((string)config()['storage'],'/');$sessionDirectory=$storage.'/sessions';
+    if(is_link($storage)||is_link($sessionDirectory))throw new RuntimeException('Almacenamiento de sesiones inseguro.');
+    if(!is_dir($sessionDirectory)&&!mkdir($sessionDirectory,0700,true)&&!is_dir($sessionDirectory))throw new RuntimeException('No se pudo crear el almacenamiento privado de sesiones.');
+    session_save_path($sessionDirectory);
     if (PHP_SAPI !== 'cli') {
         ini_set('session.use_strict_mode', '1');
         ini_set('session.use_only_cookies', '1');
@@ -98,13 +103,13 @@ function site_or_404(int $id, array $user): array {
         if (!$access) { http_response_code(403); exit('No tienes acceso a este sitio'); }
         $site['my_role'] = $access['role'];
     } else {
-        $site['my_role'] = 'admin';
+        $site['my_role'] = 'superadmin';
     }
     return $site;
 }
 
 function can_publish(array $site): bool {
-    return ($site['my_role'] ?? '') === 'admin';
+    return ($site['my_role'] ?? '') === 'superadmin';
 }
 
 function site_page(int $siteId): array {

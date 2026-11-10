@@ -1,0 +1,6 @@
+/landicy-private/config.php
+/landicy-private/storage/
+/test-fixtures/
+/tests/browser-fixtures/
+/dist/
+*.log
